@@ -1,0 +1,90 @@
+name: Android bug report
+description: Report a confirmed bug in the Android app
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please file Android app bugs here. Include enough detail to reproduce the problem.
+
+        For Bluetooth, sync, strap, or metric issues, logs and hardware details matter. Reports without a repro or log may not be actionable.
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: Settings -> What's New, or the release tag.
+      placeholder: "8.2.2"
+    validations:
+      required: true
+  - type: input
+    id: android_version
+    attributes:
+      label: Android version and device
+      description: Example: Android 15 on Pixel 8.
+    validations:
+      required: true
+  - type: dropdown
+    id: strap
+    attributes:
+      label: WHOOP strap model
+      options:
+        - WHOOP 4.0
+        - WHOOP 5.0
+        - WHOOP MG
+        - No strap / import-only
+        - Not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Data source involved
+      multiple: true
+      options:
+        - Live Bluetooth
+        - WHOOP export import
+        - Health Connect
+        - Other import
+        - UI only / no data source
+    validations:
+      required: true
+  - type: textarea
+    id: what_happens
+    attributes:
+      label: What happens
+      description: What you actually saw.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log or diagnostic attachment
+      description: Attach an exported diagnostic zip if available. Do not include account emails, serial numbers, private keys, or raw personal exports.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: This is about the Android app.
+          required: true
+        - label: I removed personal identifiers and secrets from logs or attachments.
+          required: true
+        - label: I included a repro, or explained why the issue is intermittent.
+          required: true
